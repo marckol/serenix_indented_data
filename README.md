@@ -42,4 +42,5 @@ Contains following parse methods:
     <p>When the value of options argument is a plain object, it represents options (childrenField, nameField, ...) to use when parsing. The parsing method it's ITextData.kvParse (key-value parse).</p>
 <h3>Return type</h3>
  Array
+ 
 - kvParse
