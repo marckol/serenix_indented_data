@@ -31,12 +31,12 @@ Contains following parse methods:
  the value of nameField and childrenField of the options or fields when 
  defined.</p>
 <h3>Parameters<h3>:
- - <h4>data</h4>: 
-   *Type*;String
-   *Description*: The indented string data to parse.
+ - <h4>data</h4>
+   <b>Type</b>: String
+   <b>Description</b>: The indented string data to parse.
  - <h4>options</h4>
-    *Type*: Plain object or Number
-    *Description*
+    <b>Type</b>: Plain object or Number
+    <b>Description</b>: 
     <p>When the value of options argument is a number, it represents the 
     number of spaces of a tabulation.</p>
     <p>When the value of options argument is a plain object, it represents options (childrenField, nameField, ...) to use when parsing. The parsing method it's ITextData.kvParse (key-value parse).</p>
