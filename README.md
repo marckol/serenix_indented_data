@@ -23,7 +23,7 @@ Contains following string conversion methods:
 ## ITextData class
 Contains following parse methods:
 - parse:
-Parses the given indented string data.
+<p>Parses the given indented string data.</p>
  <p>When options argument is specified and it's a plain object and has one of the following 'nameField', 'itemsField', 'childrenField' or 'fields', each parsed node/item will have a "name" field and a "children" field.</p>
  <p>When options fields property is defined and is an array, each parsed 
  node/item will have fields with names in the array.</p>
