@@ -13,5 +13,14 @@ Contains following string conversion methods:
 - toFloat
 - toDouble
 - toLongDouble
+- toUnsignedInt
+- toUnsignedShort
+- toUnsignedByte
+- toUnsignedLong
+- toUnsignedNumber
+- toUnsignedFloat
+- toUnsignedDouble
 ## ITextData class
-
+Contains following parse methods:
+- parse
+- kvParse
