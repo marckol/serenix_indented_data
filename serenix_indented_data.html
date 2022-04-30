@@ -1,0 +1,78 @@
+<html>
+<head>
+    <!-- ITextData class in serenix_indented_data.js called below requires serenix_indented_data.js loaded. It uses  the class DataType that is in in serenix_indented_data.js -->
+	<script type="text/javascript" src="serenix_data_type.js"></script>
+	<script type="text/javascript" src="serenix_indented_data.js"></script>
+	<script type="text/javascript" src="population.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var text = "CEO\n"
+			+ "  CTO\n"
+			+ "    Dévelopement\n"
+			+ "    Test\n"
+			+ "    Production\n"
+			+ "  CFO\n"
+			+ "    Comptable\n";
+			
+		var node = ITextData.parse(text);
+		
+		var node2 = ITextData.parse(text, { childrenField : "subordinates"});
+		var text2 = "CEO(NJOMO)\n"
+			+ "  CTO(KAMGA)\n"
+			+ "    Dévelopement(KEMTCHOUANG)\n"
+			+ "    Test(ADAMOU)\n"
+			+ "    Production(LOWE)\n"
+			+ "  CFO(DELBA)\n"
+			+ "    Comptable(NGOKO)\n";
+			
+		var node3 = ITextData.parse(text2, { 
+			tabSpaces: 4, 
+			createNode: function(str) {
+				var n, m = /^([^\(]+)\(([^\)]+)\)?$/.exec(str);
+				if (m) {
+					n= { job: m[1] };
+					if (m[2]) n.manager = m[2];
+				} else {
+					n = { job: str };
+				}
+				n.html = function() {
+					return "<div class=\"job\">" + this.job + "</div>" + (this.manager ? "<div class=\"manager\">" + this.manager + "</div>" : "");
+				};
+				return n;
+			}
+		});
+		var node4 = ITextData.parse(text2, { 
+			tabSpaces: 4, 
+			childrenField: "children",
+			createNode: function(str) {
+				var n, m = /^([^\(]+)\(([^\)]+)\)?$/.exec(str);
+				if (m) {
+					n= { job: m[1] };
+					if (m[2]) n.manager = m[2];
+				} else {
+					n = { job: str };
+				}
+				n.html = function() {
+					return "<div>" + this.job + "</div>" + (this.manager ? "<div>" + this.manager + "</div>" : "");
+				};
+				return n;
+			}
+		});
+		var text5 = "CEO|NJOMO\n"
+			+ "  CTO|KAMGA\n"
+			+ "    Dévelopement|KEMTCHOUANG\n"
+			+ "    Test|ADAMOU\n"
+			+ "    Production|LOWE\n"
+			+ "  CFO|DELBA\n"
+			+ "    Comptable|NGOKO\n";
+		var nodes = ITextData.parse(text5, { 
+			tabSpaces: 4, 
+			childrenField: "children",
+			fields : ['job', 'manager'],
+			delim: '|'
+		});
+		console.log(nodes);
+	</script>
+</body>
+</html>
